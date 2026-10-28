@@ -20,10 +20,13 @@ jobs:
           node-version: 20
       - name: Install dependencies
         run: npm install
+      - name: Install frontend dependencies
+        run: npm ci --prefix frontend
       - name: Run tests
         run: npm test
       - name: Run build
-        run: bash build.sh
+        run: npm run build --prefix frontend
       - name: Copy and paste build files to root directory/public_html
         run: |
-          cp -r frontend/out/* public/
+          mkdir -p public
+          cp -r frontend/out/. public/
