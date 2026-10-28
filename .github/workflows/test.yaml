@@ -22,3 +22,8 @@ jobs:
         run: npm install
       - name: Run tests
         run: npm test
+      - name: Run build
+        run: bash build.sh
+      - name: Copy and paste build files to root directory/public_html
+        run: |
+          cp -r frontend/out/* public/
